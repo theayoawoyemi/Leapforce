@@ -1,0 +1,131 @@
+/* Two column card style; */
+.column-card-wrapper-inner {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.column-card {
+  width: calc(50% - 10px);
+  margin-bottom: 20px;
+  border-radius: 5px;
+  height: 515px;
+  padding: 25px 20px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.column-card:nth-child(odd) {
+  margin-right: 10px;
+}
+
+.column-card:nth-child(even) {
+  margin-left: 10px;
+}
+
+.column-card-content {
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.column-card-text-wrapper {
+  flex: 1;
+  padding-right: 40px;
+}
+
+.column-card-title {
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 28px;
+  line-height: 32px;
+}
+
+.column-card-subtitle {
+  color: rgba(250, 250, 250, 0.5);
+  font-weight: 300;
+  margin-top: 10px;
+}
+
+.column-card-cta {
+  color: #fff;
+  font-family: inherit;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 18px;
+  background-color: transparent;
+  border: 2px solid rgba(250, 250, 250, 0.5);
+  border-radius: 5px;
+  outline: none;
+  font-weight: 400;
+  cursor: pointer;
+  transition: 0.2s cubic-bezier(0.5, 0, 0.5, 1);
+  width: 56px;
+  height: 56px;
+}
+
+.column-card-cta:hover {
+  border-color: #8d2d24;
+  color: #8d2d24;
+}
+
+.column-card-cta-icon svg{
+  height: 16px;
+  width: 16px;
+  fill: #fff;
+  transition: 0.2s cubic-bezier(0.5, 0, 0.5, 1);
+}
+
+.column-card-cta:hover .column-card-cta-icon svg{
+  fill: #8d2d24
+}
+
+/* Tablet  */
+@media only screen and (max-width: 768px) {
+  .column-card {
+    height: 468px;
+  }
+}
+
+/* Extra  */
+@media only screen and (max-width: 600px) {
+  .column-card-wrapper-inner{
+   justify-content: center
+  }
+
+  .column-card {
+    width: 100%;
+    max-width: 500px
+  }
+  
+ .column-card:nth-child(odd) {
+    margin-right: 0px;
+  }
+
+  .column-card:nth-child(even) {
+    margin-left: 0px;
+  }
+}
+
+/* Mobile */
+@media only screen and (max-width: 480px) {
+  
+  .column-card-text-wrapper {
+    padding-right: 30px;
+  }
+  
+  .column-card {
+    width: 100%;
+    margin-bottom: 20px;
+    height: 252px;
+  }
+}
+

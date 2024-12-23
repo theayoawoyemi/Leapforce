@@ -1,0 +1,263 @@
+{% import './tools/_macros.css' %}
+
+{## Table of contents
+
+  1. Variables
+    1a. Containers
+    1b. Colors
+  2. Containers / Grid / DND areas
+  3. Typography
+  4. Buttons
+##}
+
+{###########################################################################}
+{############################   1. Variables   #############################}
+{###########################################################################}
+
+/* 1a. Containers */
+
+{% set container_width = theme.spacing.maximum_content_width ~ 'px' %}
+{% set dnd_section_padding = theme.spacing.vertical_spacing ~ 'px ' ~ '1rem' %}
+
+/* 1b. Colors */
+
+{% set primary_color = theme.global_colors.primary.color  %}
+{% set secondary_color = theme.global_colors.secondary.color %}
+
+
+{###########################################################################}
+{##################   2. Containers / Grid / DND areas   ###################}
+{###########################################################################}
+
+.content-wrapper {
+  max-width: {{ container_width }};
+}
+
+.dnd-section,
+.content-wrapper--vertical-spacing {
+  padding: {{ dnd_section_padding }};
+}
+
+.dnd-section > .row-fluid {
+  max-width: {{ container_width }};
+}
+
+{###########################################################################}
+{###########################   3. Typography   #############################}
+{###########################################################################}
+
+html {
+  font-size: {{ body_font.size ~ body_font.size_unit }};
+}
+
+body {
+  font-family: "TT Commons Pro";
+  color: {{ secondary_color }};
+  font-size: 19px;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 24px;
+}
+
+/* Paragraph */
+p{
+ font-size: 19px;
+ line-height: 24px
+}
+
+/* Headings */
+h1,
+.h1 {
+  font-family: "TT Commons Pro";
+  color: #212121;
+  font-size: 48px;
+  line-height: 48px;
+  font-weight: 600
+}
+
+h2,
+.h2 {
+  font-family: "TT Commons Pro";
+  color: #212121;
+  font-size: 40px;
+  line-height: 48px;
+  font-weight: 600
+}
+
+h3,
+.h3 {
+  font-family: "TT Commons Pro";
+  color: #212121;
+  font-size: 32px;
+  line-height: 44px;
+  font-weight: 600
+}
+
+h4,
+.h4 {
+  {{ h4_font.style }};
+  color: {{ h4_font.color }};
+  font-size: 28px;
+  line-height: 40px;
+  font-weight: 600
+}
+
+h5,
+.h5 {
+  font-family: "TT Commons Pro";
+  color: #212121;
+  font-size: 24px;
+  line-height: 36px;
+  font-weight: 600
+}
+
+h6,
+.h6 {
+  font-family: "TT Commons Pro";
+  color: #212121;
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 600
+}
+
+.h1 span,
+.h2 span,
+.h3 span,
+.h4 span,
+.h5 span,
+.h6 span {
+  font-family: GT Alpina;
+  font-weight: 300;
+}
+
+.heading-label {
+  text-align: center;
+  font-size: 16px;
+  line-height: 16px;
+  margin-bottom: 10px
+}
+
+/* CTA */
+.cta:visited,
+.cta:link,
+.cta {
+  text-decoration: none;
+}
+
+.cta {
+  color: #fff;
+  font-family: inherit;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 18px;
+  background-color: #bf564d;
+  padding: 10px 20px;
+  border: 2px solid #bf564d;
+  border-radius: 5px;
+  outline: none;
+  font-weight: 400;
+  cursor: pointer;
+  transition: 0.2s cubic-bezier(0.5, 0, 0.5, 1);
+}
+
+.cta:hover,
+.cta:link:hover {
+  background-color: #8d2d24;
+  border-color: #8d2d24;
+}
+
+.cta .cta-icon {
+  margin-left: 10px;
+  font-size: 16px;
+}
+
+.cta .cta-icon svg{
+  fill: #ffffff;
+  height: 16px;
+  width: 16px
+}
+
+.cta.cta-outline {
+  padding: 0px;
+  background-color: transparent;
+  border: none;
+  color: #bf564d;
+}
+
+.cta.cta-outline .cta-icon svg{
+  fill: #bf564d;
+  transition: 0.2s cubic-bezier(0.5, 0, 0.5, 1);
+}
+
+.cta.cta-outline:hover,
+.cta.cta-outline:link:hover {
+  background-color: transparent;
+  border-color: transparent;
+  color: #8d2d24;
+}
+
+.cta.cta-outline:hover .cta-icon svg{
+  fill: #8d2d24;
+}
+
+@media only screen and (max-width: 600px) {
+  .h1 br,
+  .h2 br,
+  .h3 br,
+  .h4 br,
+  .h5 br,
+  .h6 br {
+    display: none;
+  }
+}
+
+
+@media only screen and (max-width: 480px) {
+  /* Body */
+  body {
+    font-size: 16px;
+  }
+  
+  /* Paragraph */
+  p{
+   font-size: 17px;
+   line-height: 24px
+  }
+
+  /* Headings */
+  h1,
+  .h1 {
+    line-height: 44px;
+  }
+
+  h2,
+  .h2 {
+    line-height: 40px;
+  }
+
+  h3,
+  .h3 {
+    line-height: 36px;
+  }
+
+  h4,
+  .h4 {
+    font-size: 24px;
+    line-height: 36px;
+  }
+
+  h5,
+  .h5 {
+    font-size: 20px;
+    line-height: 28px;
+  }
+
+  h6,
+  .h6 {
+    font-size: 18px;
+    line-height: 24px;
+  }
+}

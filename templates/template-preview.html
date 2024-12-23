@@ -1,0 +1,19 @@
+<!--
+  templateType: page
+  isAvailableForNewContent: true
+  label: Leapforce - Template Preview
+  screenshotPath: ../images/template-previews/home.png
+-->
+{% extends "./layouts/base.html" %}
+
+{# Body block #}
+{% block body %}
+
+{# Main content #}
+{% dnd_area "dnd_area" label="Main Content" %}
+
+  {# Call to action #}
+  {% include_dnd_partial path="../sections/cta-section.html" %}
+
+{% end_dnd_area %}
+{% endblock body %}

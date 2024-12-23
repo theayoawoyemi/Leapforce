@@ -1,0 +1,76 @@
+{# Module styles #}
+
+{% require_css %}
+  <style>
+    {% scope_css %}
+
+      {# CTA wrapper #}
+
+      {% if module.styles.alignment.alignment %}
+        .cta-wrapper {
+          text-align: {{ module.styles.alignment.alignment.horizontal_align }};
+        }
+      {% endif %}
+
+      {# CTA #}
+
+      .cta {
+        {% if module.styles.background.color.color %}
+          background-color: rgba({{ module.styles.background.color.color|convert_rgb }}, {{ module.styles.background.color.opacity / 100 }});
+        {% endif %}
+        {{ module.styles.border.border.css }}
+        {% if module.styles.corner.radius >= 0 %}
+          border-radius: {{ module.styles.corner.radius ~ "px" }};
+        {% endif %}
+        {{ module.styles.text.font.css }}
+        {{ module.styles.spacing.spacing.css }}
+      }
+
+      .cta:hover,
+      .cta:focus {
+        {% if module.styles.background.color.color %}
+          background-color: rgba({{ color_variant(module.styles.background.color.color, -80)|convert_rgb }}, {{ module.styles.background.color.opacity / 100 }});
+        {% endif %}
+      }
+
+      .cta:active {
+        {% if module.styles.background.color.color %}
+          background-color: rgba({{ color_variant(module.styles.background.color.color, 80)|convert_rgb }}, {{ module.styles.background.color.opacity / 100 }});
+        {% endif %}
+      }
+
+    {% end_scope_css %}
+  </style>
+{% end_require_css %}
+
+{# Sets attributes used for the link field #}
+
+{% set href = module.link.url.href %}
+{% if module.link.url.type == "EMAIL_ADDRESS" %}
+  {% set href = "mailto:" + href %}
+{% endif %}
+{% set rel = [] %}
+{% if module.link.no_follow %}
+  {% do rel.append("nofollow") %}
+{% endif %}
+{% if module.link.open_in_new_tab %}
+  {% do rel.append("noopener") %}
+{% endif %}
+
+{# CTA #}
+<div class="cta-wrapper">
+  <a class="cta cta-{{ module.cta_type }}" href="{{ href|escape_url }}"
+     {% if module.link.open_in_new_tab %}target="_blank"{% endif %}
+  {% if rel %}rel="{{ rel|join(" ")|escape_attr }}"{% endif %}
+     >
+    <span class="cta-label">{{ module.button_text|escape_html }}</span>
+    <span class="cta-icon">
+      {% icon
+        name="{{ module.icon_field.name }}"
+        style="{{ module.icon_field.type }}"
+        unicode="{{ module.icon_field.unicode }}"
+        icon_set="{{ module.icon_field.icon_set }}"
+      %}
+   </span>
+  </a>
+</div>

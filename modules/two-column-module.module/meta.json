@@ -1,0 +1,10 @@
+{
+  "global" : false,
+  "content_types" : [ "LANDING_PAGE", "SITE_PAGE" ],
+  "categories" : [ "forms_and_buttons" ],
+  "icon" : "fontawesome-5.14.0:Columns:SOLID",
+  "host_template_types" : [ "PAGE" ],
+  "module_id" : 196564390118,
+  "label" : "Two Column Module",
+  "is_available_for_new_content" : true
+}

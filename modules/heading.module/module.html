@@ -1,0 +1,38 @@
+{# Module styles #}
+{% require_css %}
+  <style>
+    {% scope_css %}
+    
+      {# Heading wrapper #}
+      {% if module.styles.alignment.alignment %}
+        .heading-wrapper {
+          text-align: {{ module.styles.alignment.alignment.horizontal_align }};
+        }
+      {% endif %}
+    
+     {# Label #}
+     .heading-label{
+       {{ module.styles.heading_label.font.css }}
+     }
+    
+     {# Heading #}
+     .heading.{{ module.heading.heading_type}} {
+       {{ module.styles.heading.font.css }}
+     }
+    
+    {% end_scope_css %}
+  </style>
+{% end_require_css %}
+
+{# Content #}
+<div class="heading-wrapper">
+  {% if module.heading_label.show_label %}
+    <span class="heading-label">{{ module.heading_label.text }}</span>
+  {% endif %}
+  {% if module.heading.show_heading %}
+    <{{ module.heading.heading_type }} class="heading {{ module.heading.heading_type}}">
+      {{ module.heading.text }}
+    </{{ module.heading.heading_type }}>
+  {% endif %}
+</div>
+

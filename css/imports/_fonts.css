@@ -1,0 +1,12 @@
+/* Custom font imports */
+
+@font-face {
+  font-family: GT Alpina;
+  src: url("https://143165537.fs1.hubspotusercontent-eu1.net/hubfs/143165537/fonts/GTAlpina-Light.otf") format("opentype");
+}
+
+@font-face {
+  font-family: TT Commons Pro;
+  src: url("https://143165537.fs1.hubspotusercontent-eu1.net/hubfs/143165537/fonts/TT%20Commons%20Pro%20Normal.otf")
+    format("opentype");
+}

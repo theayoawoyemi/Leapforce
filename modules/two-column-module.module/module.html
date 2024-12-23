@@ -1,0 +1,161 @@
+{# Module styles #}
+
+{% require_css %}
+  <style>
+    {% scope_css %}
+
+      {# Card wrapper #}
+      .column-card-wrapper {
+       {{ module.styles.spacing.spacing.css }}
+      }
+    
+      {# Card #}
+      .column-card {
+        {% if module.styles.card.corner.radius > 0 %}
+          border-radius: {{ module.styles.card.corner.radius }}px;
+        {% endif %}
+      }
+    
+      {# Title #}
+      .column-card-title {
+       {{ module.styles.card.title.font.css }}
+      }
+    
+      {# Subtitle #}
+      .column-card-subtitle {
+       {{ module.styles.card.subtitle.font.css }}
+      }
+    
+      {# Button #}
+      .column-card-cta {
+        {% if module.styles.card.button.color.color %}
+          color: {{ module.styles.card.button.color.color }};
+          border-color: {{ module.styles.card.button.color.color }};
+        {% endif %}
+        {% if module.styles.card.button.icon_size > 0 %}
+          font-size: {{ module.styles.card.button.icon_size }}px;
+        {% endif %}
+        {% if module.styles.card.button.button_size > 0 %}
+          height: {{ module.styles.card.button.button_size }}px;
+          width: {{ module.styles.card.button.button_size }}px;
+        {% endif %}
+      }
+    
+      .column-card-cta svg{
+        {% if module.styles.card.button.color.color %}
+          fill: {{ module.styles.card.button.color.color }};
+        {% endif %}
+        {% if module.styles.card.button.icon_size > 0 %}
+          height: {{ module.styles.card.button.icon_size }}px;
+          width: {{ module.styles.card.button.icon_size }}px;
+        {% endif%}
+      }
+    
+      .column-card-cta:hover {
+        {% if module.styles.card.button.hover_color.color %}
+          color: {{ module.styles.card.button.hover_color.color }};
+          border-color: {{ module.styles.card.button.hover_color.color }};
+        {% endif %}
+      }
+    
+      .column-card-cta:hover svg{
+        {% if module.styles.card.button.hover_color.color %}
+          fill: {{ module.styles.card.button.hover_color.color }};
+        {% endif %}
+      }
+
+    {% end_scope_css %}
+  </style>
+{% end_require_css %}
+
+{# Render HubDB table macro #}
+{% macro render_card(item) %}
+  <div class="column-card" {% if item.card_image.url %} style="background-image: linear-gradient(to bottom, transparent, transparent, rgba(33, 33, 33, 0.9)), url({{ item.card_image.url }})"{% endif %}>
+    <div class="column-card-content">
+      <div class="column-card-text-wrapper">
+        <h4 class="column-card-title">{{item.title}}</h4>
+        <p class="column-card-subtitle">
+          {{item.subtitle}}
+        </p>
+      </div>
+      
+      <div class="column-card-cta-wrapper">
+        <a href="{{item.card_link}}" class="column-card-cta"
+           {% if module.card_settings.open_in_new_tab %}
+              target="_blank"
+           {% endif %}
+           >
+          <span class="column-card-cta-icon">
+            {% icon
+              name="{{ module.card_settings.card_icon.name }}"
+              style="{{ module.card_settings.card_icon.type }}"
+              unicode="{{ module.card_settings.card_icon.unicode }}"
+              icon_set="{{ module.card_settings.card_icon.icon_set }}"
+            %}
+          </span>
+        </a>
+      </div>
+    </div>
+  </div>
+{% endmacro %}
+
+{# Render repeater cards macro #}
+{% macro render_card_repeater(item) %}
+  <div class="column-card" {% if item.card_image.src %} style="background-image: linear-gradient(to bottom, transparent, transparent, rgba(33, 33, 33, 0.9)), url({{ item.card_image.src }})"{% endif %}>
+    <div class="column-card-content">
+      <div class="column-card-text-wrapper">
+        <h4 class="column-card-title">{{ item.card_title }}</h4>
+        <p class="column-card-subtitle">{{ item.subtitle }}</p>
+      </div>
+      <div class="column-card-cta-wrapper">
+        {% set href = item.card_link.url.href %}
+        {% if item.card_link.url.type is equalto "EMAIL_ADDRESS" %}
+          {% set href = "mailto:" + href %}
+        {% endif %}
+        <a class="column-card-cta"
+          {% if item.card_link.url.type is equalto "CALL_TO_ACTION"  %}
+            href="{{ href }}" {# The href here is not escaped as it is not editable and functions as a JavaScript call to the associated CTA #}
+          {% else %}
+            href="{{ href|escape_url }}"
+          {% endif %}
+          {% if item.card_link.open_in_new_tab %}
+            target="_blank"
+          {% endif %}
+          {% if item.card_link.rel %}
+            rel="{{ item.card_link.rel|escape_attr }}"
+          {% endif %}
+           >
+          <span class="column-card-cta-icon">
+            {% icon
+              name="{{ item.card_icon.name }}"
+              style="{{ item.card_icon.type }}"
+              unicode="{{ item.card_icon.unicode }}"
+              icon_set="{{ item.card_icon.icon_set }}"
+            %}
+          </span>
+        </a>
+      </div>
+    </div>
+  </div>
+{% endmacro %}
+
+{# Two column #}
+<div class="column-card-wrapper">
+  <div class="column-card-wrapper-inner">
+    
+    {% if module.cards_content_source == "hubdb" %}
+      {# HubDB cards #}
+      {% for row in hubdb_table_rows(module.card_hubdb_table) %}
+        {% if row %}
+          {{ render_card(row) }}
+        {% endif %}
+      {% endfor %}
+    
+    {% elif module.cards_content_source == "repeater" %}
+      {# Repeater cards #}
+      {% for item in module.cards %}
+         {{render_card_repeater(item)}}
+      {% endfor %}
+    {% endif %}
+  </div>
+</div>

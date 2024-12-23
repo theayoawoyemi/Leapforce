@@ -1,0 +1,86 @@
+<!--
+  templateType: section
+  label: CTA Section
+  isAvailableForNewContent: true
+  screenshotPath: ../images/section-previews/cta-section.png
+  description: "CTA Section - Two Blocks with heading and richtext"
+-->
+{% dnd_section
+  max_width={{ context.max_width or 1440 }},
+  padding={
+    "default": {
+      "top": 80,
+      "right": 20,
+      "bottom": 80,
+      "left": 20
+    },
+    "mobile": {
+      "top": 40,
+      "right": 20,
+      "bottom": 40,
+      "left": 20
+    }
+  },
+  vertical_alignment="MIDDLE"
+%}
+
+  {# Full width span column #}
+  {% dnd_column %}
+
+    {# Heading row #}
+    {% dnd_row 
+      padding={
+        "default": {
+          "top": 0,
+          "right": 20,
+          "bottom": 20,
+          "left": 20
+        }
+      }
+    %}
+      {% dnd_module "heading" path="../modules/heading", label="Heading" %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+
+    {# Optional richtext row #}
+    {% dnd_row 
+      padding={
+        "default": {
+          "top": 0,
+          "right": 20,
+          "bottom": 20,
+          "left": 20
+        }
+      }
+    %}
+      {% dnd_module
+        path="@hubspot/rich_text",
+        html={{ context.content_richtext or '<div style="text-align: center"><p>Optional body copy goes here.</p></div>' }}
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+
+    {# cta #}
+    {% dnd_row %}
+      {% dnd_module
+        path="../modules/cta",
+        button_text={{ context.button_text or "Optional button" }},
+        styles={
+          "alignment": {
+            "alignment": {
+              "horizontal_align": "CENTER"
+            }
+          }
+        }
+      %}
+    {% end_dnd_module %}
+    {% end_dnd_row %}
+
+    {# Two column block row #}
+    {% dnd_row %}
+      {% dnd_module "two_column_module" path="../modules/two-column-module", label="Two Column Module" %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+
+  {% end_dnd_column %}
+{% end_dnd_section %}

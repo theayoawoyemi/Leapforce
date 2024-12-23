@@ -1,0 +1,14 @@
+{
+  "label": "Leapforce Theme",
+  "author": {
+    "name": "Ayo Awoyemi",
+    "email": "theayoawoyemi@gmail.com",
+    "url": "https://ayo-awoyemi.onrender.com"
+	},
+  "documentation_url": "https://developers.hubspot.com/docs/cms/building-blocks/themes/hubspot-cms-boilerplate",
+  "example_url": "https://boilerplate.hubspotcms.com",
+  "preview_path": "./templates/template-preview.html",
+  "screenshot_path": "./images/template-previews/leapforce-preview.png",
+  "enable_domain_stylesheets": false,
+  "license": "./license.txt"
+}
