@@ -31,10 +31,9 @@ Custom fields:
 ![alt text](https://143165537.fs1.hubspotusercontent-eu1.net/hubfs/143165537/heading-styles.png)
 
 Fields:
-* Alignment - Align text to left, center and right
-* Heading Label - Style heading label font size, font and color, weight etc
-* Heading Label - Style heading font size, font and color, weight etc
-
+* Alignment - [Alignment] Align text to left, center and right
+* Heading Label - [Font Group] Style heading label font size, font and color, weight etc
+* Heading Label - [Font Group] Style heading font size, font and color, weight etc
 
 ### 02 - CTA
 
@@ -51,14 +50,62 @@ Custom fields:
 ![alt text](https://143165537.fs1.hubspotusercontent-eu1.net/hubfs/143165537/cta-style.png)
 
 Fields:
-* Text - Style Button text, font, color etc.
-* Background - Stlye Button background
-* Border - Style Button border width, border color etc.
-* Corner - Style Button border radius
-* Spacing - Add padding and margin to Button
-* Alignment - Align Button horizontaly to left, center and right.
+* Text - [Font Group] Style Button text, font, color etc.
+* Background - [Color] Stlye Button background
+* Border - [Border Group] Style Button border width, border color etc.
+* Corner - [Number] Style Button border radius
+* Spacing - [Spacing] Add padding and margin to Button
+* Alignment - [Alignment] Align Button horizontaly to left, center and right.
 
 
-<!-- CONTACT -->
-### Live Preview
-Project Link: [Live Preview](https://143165537.hs-sites-eu1.com/leapforce-assesment)
+### 03 - Two Column Module
+
+#### Content
+![Two Column Module - HubDB](https://143165537.fs1.hubspotusercontent-eu1.net/hubfs/143165537/two-col-hubdb.png)
+![Two Column Repeater](https://143165537.fs1.hubspotusercontent-eu1.net/hubfs/143165537/two-col-repeater.png)
+
+Custom fields - HubDB Content Type:
+* Cards Content Source - [Choice] Choose between HubDB Table and Repeater content for cards
+* Card HubDB Table - [HubDBTable] This field uses HubDB Table with rows and columns:
+  * Card Image (card_image) - [Image] required
+  * Title (title) - [Text] required
+  * Subtitle (subtitle) - [Text] required
+  * Card Link (card_link) - [URL] required
+* Card Settings - [Group]
+  * Card Icon - [Icon] This is the card button icon
+  * Open Link In New Tab - [Checkbox] Check if it should open the link in another tab or not
+ 
+Custom fields - Repeater Content Type:
+
+![Two Column Repeater Fields](https://143165537.fs1.hubspotusercontent-eu1.net/hubfs/143165537/two-col-repeater-1.png)
+
+* Card Image - [Image]
+* Title - [Text] Card title
+* Subtitle - [Subtitle] Card subtitle
+* Card Link - [URL] Card Link
+* Card Icon - [Icon] This is the card button icon
+ 
+#### Styles
+![alt text](https://143165537.fs1.hubspotusercontent-eu1.net/hubfs/143165537/two-col-style.png)
+
+Fields:
+* Spacing - Add spacing to the card parent wrapper.
+* Card - [Style Group]
+  * Corner - [Number] Style Button border radius
+  * Title - [Font Group] Add styles to the card title including fonts, color, size etc.
+  * Subtitle - [Font Group] Add styles to the card subtitle including fonts, color, size etc.
+  * Button - [Style Group]
+    * Button Size - [Number] Increase or decrease the size of the button.
+    * Icon Size - [Number] Increase or decrease the size of the button icon
+    * Color - [Color] Change button color
+    * Hover Color - [Color] Change button hover color
+   
+### 04 - Richtext
+
+#### Content
+![alt text](https://143165537.fs1.hubspotusercontent-eu1.net/hubfs/143165537/richtext.png)
+
+This is a built-in HubSpot Module:
+ 
+### Project Preview
+Link: [Preview live website](https://143165537.hs-sites-eu1.com/leapforce-assesment)
