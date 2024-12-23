@@ -108,4 +108,4 @@ Fields:
 This is a built-in HubSpot Module:
  
 ### Project Preview
-Link: [Preview live website](https://143165537.hs-sites-eu1.com/leapforce-assesment)
+Link: [Preview live website](http://143165537.hs-sites-eu1.com/leapforce-assessment)
